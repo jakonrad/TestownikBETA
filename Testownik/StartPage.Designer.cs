@@ -42,7 +42,7 @@
             this.Add_button.Name = "Add_button";
             this.Add_button.Size = new System.Drawing.Size(305, 40);
             this.Add_button.TabIndex = 0;
-            this.Add_button.Text = "Stwórz nowy test";
+            this.Add_button.Text = "Stwórz nowy test1";
             this.Add_button.UseVisualStyleBackColor = true;
             this.Add_button.Click += new System.EventHandler(this.Add_button_Click);
             // 
