@@ -1,0 +1,17 @@
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\bin\Debug\Testownik.exe.config
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\bin\Debug\Testownik.exe
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\bin\Debug\Testownik.pdb
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\bin\Debug\EntityFramework.dll
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\bin\Debug\EntityFramework.xml
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\obj\Debug\Testownik.csprojResolveAssemblyReference.cache
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\obj\Debug\Testownik.Properties.Resources.resources
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\obj\Debug\Testownik.csproj.GenerateResource.Cache
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\obj\Debug\Testownik.exe
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\obj\Debug\Testownik.pdb
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\obj\Debug\Testownik.NameOfQuiz.resources
+C:\Users\kondz\Desktop\Projekty C#\Testownik\Testownik\obj\Debug\Testownik.StartPage.resources
+D:\Testownik\Testownik\bin\Debug\Testownik.exe.config
+D:\Testownik\Testownik\obj\Debug\Testownik.exe
+D:\Testownik\Testownik\obj\Debug\Testownik.pdb
