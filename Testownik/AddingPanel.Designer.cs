@@ -43,6 +43,10 @@
             this.D_textbox = new System.Windows.Forms.TextBox();
             this.Add_button = new System.Windows.Forms.Button();
             this.Clear_button = new System.Windows.Forms.Button();
+            this.A_checkbox = new System.Windows.Forms.CheckBox();
+            this.B_checkbox = new System.Windows.Forms.CheckBox();
+            this.C_checkbox = new System.Windows.Forms.CheckBox();
+            this.D_checkbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +71,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(503, 1);
+            this.dataGridView1.Location = new System.Drawing.Point(552, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(240, 342);
             this.dataGridView1.TabIndex = 2;
@@ -164,6 +168,7 @@
             this.Add_button.TabIndex = 13;
             this.Add_button.Text = "Dodaj";
             this.Add_button.UseVisualStyleBackColor = true;
+            this.Add_button.Click += new System.EventHandler(this.Add_button_Click);
             // 
             // Clear_button
             // 
@@ -174,11 +179,55 @@
             this.Clear_button.Text = "Wyczyść pola";
             this.Clear_button.UseVisualStyleBackColor = true;
             // 
+            // A_checkbox
+            // 
+            this.A_checkbox.AutoSize = true;
+            this.A_checkbox.Location = new System.Drawing.Point(466, 89);
+            this.A_checkbox.Name = "A_checkbox";
+            this.A_checkbox.Size = new System.Drawing.Size(82, 17);
+            this.A_checkbox.TabIndex = 16;
+            this.A_checkbox.Text = "Prawidłowa";
+            this.A_checkbox.UseVisualStyleBackColor = true;
+            // 
+            // B_checkbox
+            // 
+            this.B_checkbox.AutoSize = true;
+            this.B_checkbox.Location = new System.Drawing.Point(466, 145);
+            this.B_checkbox.Name = "B_checkbox";
+            this.B_checkbox.Size = new System.Drawing.Size(82, 17);
+            this.B_checkbox.TabIndex = 17;
+            this.B_checkbox.Text = "Prawidłowa";
+            this.B_checkbox.UseVisualStyleBackColor = true;
+            // 
+            // C_checkbox
+            // 
+            this.C_checkbox.AutoSize = true;
+            this.C_checkbox.Location = new System.Drawing.Point(466, 193);
+            this.C_checkbox.Name = "C_checkbox";
+            this.C_checkbox.Size = new System.Drawing.Size(82, 17);
+            this.C_checkbox.TabIndex = 18;
+            this.C_checkbox.Text = "Prawidłowa";
+            this.C_checkbox.UseVisualStyleBackColor = true;
+            // 
+            // D_checkbox
+            // 
+            this.D_checkbox.AutoSize = true;
+            this.D_checkbox.Location = new System.Drawing.Point(466, 243);
+            this.D_checkbox.Name = "D_checkbox";
+            this.D_checkbox.Size = new System.Drawing.Size(82, 17);
+            this.D_checkbox.TabIndex = 19;
+            this.D_checkbox.Text = "Prawidłowa";
+            this.D_checkbox.UseVisualStyleBackColor = true;
+            // 
             // AddingPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 343);
+            this.ClientSize = new System.Drawing.Size(794, 343);
+            this.Controls.Add(this.D_checkbox);
+            this.Controls.Add(this.C_checkbox);
+            this.Controls.Add(this.B_checkbox);
+            this.Controls.Add(this.A_checkbox);
             this.Controls.Add(this.Clear_button);
             this.Controls.Add(this.Add_button);
             this.Controls.Add(this.D_textbox);
@@ -196,6 +245,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddingPanel";
             this.Text = "Testownik";
+            this.Load += new System.EventHandler(this.AddingPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -219,5 +269,9 @@
         private System.Windows.Forms.TextBox D_textbox;
         private System.Windows.Forms.Button Add_button;
         private System.Windows.Forms.Button Clear_button;
+        private System.Windows.Forms.CheckBox A_checkbox;
+        private System.Windows.Forms.CheckBox B_checkbox;
+        private System.Windows.Forms.CheckBox C_checkbox;
+        private System.Windows.Forms.CheckBox D_checkbox;
     }
 }

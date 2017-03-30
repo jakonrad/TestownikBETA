@@ -48,6 +48,7 @@
             this.Ok_button.TabIndex = 1;
             this.Ok_button.Text = "OK";
             this.Ok_button.UseVisualStyleBackColor = true;
+            this.Ok_button.Click += new System.EventHandler(this.Ok_button_Click);
             // 
             // label1
             // 
@@ -59,7 +60,7 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Wpisz nazwę swojego nowego testu:";
             // 
-            // Name_of_quiz
+            // NameOfQuiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -67,7 +68,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Ok_button);
             this.Controls.Add(this.Name_of_quiz_textbox);
-            this.Name = "Name_of_quiz";
+            this.Name = "NameOfQuiz";
             this.Text = "Wpisz nazwę testu";
             this.ResumeLayout(false);
             this.PerformLayout();
