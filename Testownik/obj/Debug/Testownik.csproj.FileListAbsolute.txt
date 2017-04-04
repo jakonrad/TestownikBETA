@@ -30,3 +30,11 @@ C:\Users\kondz\Source\Repos\quizrepo\Testownik\obj\Debug\Testownik.Properties.Re
 C:\Users\kondz\Source\Repos\quizrepo\Testownik\obj\Debug\Testownik.csproj.GenerateResource.Cache
 C:\Users\kondz\Source\Repos\quizrepo\Testownik\obj\Debug\Testownik.exe
 C:\Users\kondz\Source\Repos\quizrepo\Testownik\obj\Debug\Testownik.pdb
+C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.csprojResolveAssemblyReference.cache
+C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.AddingPanel.resources
+C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.NameOfQuiz.resources
+C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.StartPage.resources
+C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.Properties.Resources.resources
+C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.csproj.GenerateResource.Cache
+C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.exe
+C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.pdb
