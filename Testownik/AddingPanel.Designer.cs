@@ -178,6 +178,7 @@
             this.Clear_button.TabIndex = 14;
             this.Clear_button.Text = "Wyczyść pola";
             this.Clear_button.UseVisualStyleBackColor = true;
+            
             // 
             // A_checkbox
             // 

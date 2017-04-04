@@ -16,7 +16,9 @@ namespace Testownik
     {
         //zmienne
         public string NameOfQuizDeliver { get; set; }
+
         private int quizID { get; set; }
+        private int questID { get; set; }
         private List<Question> questList { get; set; }
         private List<Question> qlist = new List<Question>();
 
@@ -25,6 +27,7 @@ namespace Testownik
             InitializeComponent();
             this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
+
         private void AddingPanel_Load(object sender, EventArgs e)
         {
             using (var db = new AppContext())
@@ -41,6 +44,7 @@ namespace Testownik
 
             }
         }
+
         private void Add_button_Click(object sender, EventArgs e)
         {
             if (Add_button.Text == "Dodaj")
@@ -127,12 +131,12 @@ namespace Testownik
                         db.SaveChanges();
                         questList = quiz.Questions;
                         updateDGV();
-                        
+                        questID = question.Id;
                     }
                     clearFields();
                     MessageBox.Show("Pomyślnie dodano pytanie");
                 }
-                
+
             }
         }
 
@@ -175,7 +179,8 @@ namespace Testownik
             }
             else
             {
-                if (A_checkbox.Checked==false && B_checkbox.Checked==false && C_checkbox.Checked==false && D_checkbox.Checked==false)
+                if (A_checkbox.Checked == false && B_checkbox.Checked == false && C_checkbox.Checked == false &&
+                    D_checkbox.Checked == false)
                 {
                     MessageBox.Show(
                         "Błąd: Nie zaznaczyłeś ani jednej poprawnej odpowiedzi. Zaznacz przynajmniej jedną!");
@@ -186,9 +191,23 @@ namespace Testownik
 
         }
 
-       private void getAnswers()
+        private void getAnswersFromQuestions(int quID)
         {
-             
+
+            using (var db = new AppContext())
+            {
+                Quiz quiz = new Quiz();
+                quiz = db.Quizes.FirstOrDefault(a => a.Id == quizID);
+                quiz.Questions = new List<Question>();
+                Question question = new Question();
+                question = db.Questions.FirstOrDefault(b => b.Id == questID);
+                List<Answer>[] ans = new List<Answer>[4];
+                
+
+            }
+
+
         }
+
     }
 }
