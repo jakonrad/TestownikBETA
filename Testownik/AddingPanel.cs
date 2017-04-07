@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -18,7 +19,7 @@ namespace Testownik
         public string NameOfQuizDeliver { get; set; }
 
         private int quizID { get; set; }
-        private int questID { get; set; }
+        private string questID { get; set; }
         private List<Question> questList { get; set; }
         private List<Question> qlist = new List<Question>();
 
@@ -131,12 +132,106 @@ namespace Testownik
                         db.SaveChanges();
                         questList = quiz.Questions;
                         updateDGV();
-                        questID = question.Id;
+
                     }
                     clearFields();
                     MessageBox.Show("Pomyślnie dodano pytanie");
                 }
 
+            }
+            else if (Add_button.Text == "Aktualizuj pytanie")
+            {
+                if (isChecked() == true)
+                {
+                    using (var db = new AppContext())
+                    {
+                        Answer ans = new Answer();
+                        Question question = new Question();
+                        //wyciąganie pytania z bazy
+                        int questid= Int32.Parse(questID);
+                        question = db.Questions.FirstOrDefault(b => b.Id ==questid );
+                        question.Answers = new List<Answer>();
+                        List<Answer> answers = question.Answers;
+                        ans = db.Answers.FirstOrDefault(a => a.Question.Id == questid);
+                        int ansid = ans.Id;
+                        if (A_checkbox.Checked) //dodajemy 1 odp do bazy
+                        {
+                            new Answer()
+                            {
+                                Ans = A_textbox.Text,
+                                IsCorrect = true
+                            };
+                            db.Entry(answers[0]).State= EntityState.Modified;
+                        }
+                        else
+                        {
+                            new Answer()
+                            {
+                                Ans = A_textbox.Text
+                                
+                            };
+                            db.Entry(answers[0]).State= EntityState.Modified;
+                        }
+                        if (B_checkbox.Checked) //dodajemy 1 odp do bazy
+                        {
+                            new Answer()
+                            {
+                                Ans = B_textbox.Text,
+                                IsCorrect = true
+                            };
+                            db.Entry(answers[1]).State = EntityState.Modified;
+                        }
+                        else
+                        {
+                            new Answer()
+                            {
+                                Ans = B_textbox.Text
+
+                            };
+                            db.Entry(answers[1]).State = EntityState.Modified;
+                        }
+                        if (C_checkbox.Checked) //dodajemy 1 odp do bazy
+                        {
+                            new Answer()
+                            {
+                                Ans = C_textbox.Text,
+                                IsCorrect = true
+                            };
+                            db.Entry(answers[2]).State = EntityState.Modified;
+                        }
+                        else
+                        {
+                            new Answer()
+                            {
+                                Ans = C_textbox.Text
+
+                            };
+                            db.Entry(answers[2]).State = EntityState.Modified;
+                        }
+                        if (D_checkbox.Checked) //dodajemy 1 odp do bazy
+                        {
+                            new Answer()
+                            {
+                                Ans = D_textbox.Text,
+                                IsCorrect = true
+                            };
+                            db.Entry(answers[3]).State = EntityState.Modified;
+                        }
+                        else
+                        {
+                            new Answer()
+                            {
+                                Ans = D_textbox.Text
+
+                            };
+                            db.Entry(answers[3]).State = EntityState.Modified;
+                        }
+                        db.SaveChanges();
+                        updateDGV();
+                    }
+                    clearFields();
+                    Add_button.Text = "Dodaj";
+                }
             }
         }
 
@@ -160,7 +255,7 @@ namespace Testownik
             qlist.AddRange(questList);
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = qlist;
-            dataGridView1.Columns["Id"].HeaderText = "Id pytania";
+            dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["Ask"].HeaderText = "Treść pytania";
             dataGridView1.Columns["Quiz"].Visible = false;
             dataGridView1.RowHeadersVisible = false;
@@ -191,23 +286,61 @@ namespace Testownik
 
         }
 
-        private void getAnswersFromQuestions(int quID)
+        private void getAnswersFromQuestions(int test)
         {
 
             using (var db = new AppContext())
             {
-                Quiz quiz = new Quiz();
-                quiz = db.Quizes.FirstOrDefault(a => a.Id == quizID);
-                quiz.Questions = new List<Question>();
+                Answer ans = new Answer();
                 Question question = new Question();
-                question = db.Questions.FirstOrDefault(b => b.Id == questID);
-                List<Answer>[] ans = new List<Answer>[4];
-                
+                //wyciąganie pytania z bazy
+                question = db.Questions.FirstOrDefault(b => b.Id == test);
+                question.Answers = new List<Answer>();
+                int temp = question.Id;
+                //przypisanie pytań znajdujących się w bazie do textboxów
+                Question_textbox.Text = question.Ask;
+                //odpowiedź A
+                ans = db.Answers.FirstOrDefault(c => c.Question.Id == temp);
+                int pomocnicza = ans.Id;
+                A_textbox.Text = ans.Ans;
+                if (ans.IsCorrect == true)
+                    A_checkbox.CheckState = CheckState.Checked;
+                //odpowiedź B
+                ans = db.Answers.FirstOrDefault(c => c.Id == pomocnicza + 1);
+                B_textbox.Text = ans.Ans;
+                if (ans.IsCorrect == true)
+                    B_checkbox.CheckState = CheckState.Checked;
+                //odpowiedź C
+                ans = db.Answers.FirstOrDefault(c => c.Id == pomocnicza + 2);
+                C_textbox.Text = ans.Ans;
+                if (ans.IsCorrect == true)
+                    C_checkbox.CheckState = CheckState.Checked;
+                //odpowiedź D
+                ans = db.Answers.FirstOrDefault(c => c.Id == pomocnicza + 3);
+                D_textbox.Text = ans.Ans;
+                if (ans.IsCorrect == true)
+                    D_checkbox.CheckState = CheckState.Checked;
+
+
+
 
             }
 
 
         }
 
+        private void Clear_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            clearFields();
+            questID = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
+            getAnswersFromQuestions(Int32.Parse(questID));
+            Add_button.Text = "Aktualizuj pytanie";
+
+        }
     }
 }
