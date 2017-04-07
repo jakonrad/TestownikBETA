@@ -75,6 +75,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(240, 342);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label2
             // 
@@ -178,7 +179,7 @@
             this.Clear_button.TabIndex = 14;
             this.Clear_button.Text = "Wyczyść pola";
             this.Clear_button.UseVisualStyleBackColor = true;
-            
+            this.Clear_button.Click += new System.EventHandler(this.Clear_button_Click);
             // 
             // A_checkbox
             // 
