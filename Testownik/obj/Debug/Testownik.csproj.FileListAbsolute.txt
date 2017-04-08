@@ -45,3 +45,18 @@ C:\Users\kondz\Desktop\Projekty C#\Testownik\bin\Debug\EntityFramework.dll
 C:\Users\kondz\Desktop\Projekty C#\Testownik\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\kondz\Desktop\Projekty C#\Testownik\bin\Debug\EntityFramework.xml
 C:\Users\kondz\Desktop\Projekty C#\Testownik\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\bin\Debug\Testownik.exe.config
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\bin\Debug\Testownik.exe
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\bin\Debug\Testownik.pdb
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\bin\Debug\EntityFramework.dll
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\bin\Debug\EntityFramework.xml
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\obj\Debug\Testownik.csprojResolveAssemblyReference.cache
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\obj\Debug\Testownik.AddingPanel.resources
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\obj\Debug\Testownik.NameOfQuiz.resources
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\obj\Debug\Testownik.StartPage.resources
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\obj\Debug\Testownik.Properties.Resources.resources
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\obj\Debug\Testownik.csproj.GenerateResource.Cache
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\obj\Debug\Testownik.exe
+C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\obj\Debug\Testownik.pdb
