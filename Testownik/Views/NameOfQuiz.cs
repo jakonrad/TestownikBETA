@@ -19,8 +19,10 @@ namespace Testownik
 
         private void Ok_button_Click(object sender, EventArgs e)
         {
-            AddingPanel panel= new AddingPanel();
-            panel.NameOfQuizDeliver = this.Name_of_quiz_textbox.Text;
+            var panel = new AddingPanel
+            {
+                NameOfQuizDeliver = Name_of_quiz_textbox.Text
+            };
             panel.Show();
             Hide();
         }
