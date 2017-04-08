@@ -45,9 +45,10 @@ namespace Testownik
 
             }
         }
-
+        
         private void Add_button_Click(object sender, EventArgs e)
         {
+            /////////////////////////////////////////////////////////////////////dodawanie pytań
             if (Add_button.Text == "Dodaj")
             {
                 if (isChecked() == true)
@@ -138,7 +139,7 @@ namespace Testownik
                     MessageBox.Show("Pomyślnie dodano pytanie");
                 }
 
-            }
+            }///////////////////////////////////////////////////////////////////////////////////tutaj jest edycja pytań
             else if (Add_button.Text == "Aktualizuj pytanie")
             {
                 if (isChecked() == true)
@@ -151,80 +152,62 @@ namespace Testownik
                         int questid= Int32.Parse(questID);
                         question = db.Questions.FirstOrDefault(b => b.Id ==questid );
                         question.Answers = new List<Answer>();
-                        List<Answer> answers = question.Answers;
+                        //Answer answers = new Answer();
                         ans = db.Answers.FirstOrDefault(a => a.Question.Id == questid);
                         int ansid = ans.Id;
+
+                        ans = db.Answers.FirstOrDefault(a => a.Id == ansid);
                         if (A_checkbox.Checked) //dodajemy 1 odp do bazy
                         {
-                            new Answer()
-                            {
-                                Ans = A_textbox.Text,
-                                IsCorrect = true
-                            };
-                            db.Entry(answers[0]).State= EntityState.Modified;
+                            ans.Ans = A_textbox.Text;
+                            ans.IsCorrect = true;
+                            
+                            db.Entry(ans).State= EntityState.Modified;
                         }
                         else
                         {
-                            new Answer()
-                            {
-                                Ans = A_textbox.Text
-                                
-                            };
-                            db.Entry(answers[0]).State= EntityState.Modified;
+                            ans.Ans = A_textbox.Text;
+                            db.Entry(ans).State= EntityState.Modified;
                         }
+                        
+                        ans = db.Answers.FirstOrDefault(a => a.Id == ansid+1);
                         if (B_checkbox.Checked) //dodajemy 1 odp do bazy
                         {
-                            new Answer()
-                            {
-                                Ans = B_textbox.Text,
-                                IsCorrect = true
-                            };
-                            db.Entry(answers[1]).State = EntityState.Modified;
+                            ans.Ans = B_textbox.Text;
+                            ans.IsCorrect = true;
+
+                            db.Entry(ans).State = EntityState.Modified;
                         }
                         else
                         {
-                            new Answer()
-                            {
-                                Ans = B_textbox.Text
-
-                            };
-                            db.Entry(answers[1]).State = EntityState.Modified;
+                            ans.Ans = B_textbox.Text;
+                            db.Entry(ans).State = EntityState.Modified;
                         }
+                        ans = db.Answers.FirstOrDefault(a => a.Id == ansid+2);
                         if (C_checkbox.Checked) //dodajemy 1 odp do bazy
                         {
-                            new Answer()
-                            {
-                                Ans = C_textbox.Text,
-                                IsCorrect = true
-                            };
-                            db.Entry(answers[2]).State = EntityState.Modified;
+                            ans.Ans = C_textbox.Text;
+                            ans.IsCorrect = true;
+
+                            db.Entry(ans).State = EntityState.Modified;
                         }
                         else
                         {
-                            new Answer()
-                            {
-                                Ans = C_textbox.Text
-
-                            };
-                            db.Entry(answers[2]).State = EntityState.Modified;
+                            ans.Ans = C_textbox.Text;
+                            db.Entry(ans).State = EntityState.Modified;
                         }
+                        ans = db.Answers.FirstOrDefault(a => a.Id == ansid+3);
                         if (D_checkbox.Checked) //dodajemy 1 odp do bazy
                         {
-                            new Answer()
-                            {
-                                Ans = D_textbox.Text,
-                                IsCorrect = true
-                            };
-                            db.Entry(answers[3]).State = EntityState.Modified;
+                            ans.Ans = D_textbox.Text;
+                            ans.IsCorrect = true;
+
+                            db.Entry(ans).State = EntityState.Modified;
                         }
                         else
                         {
-                            new Answer()
-                            {
-                                Ans = D_textbox.Text
-
-                            };
-                            db.Entry(answers[3]).State = EntityState.Modified;
+                            ans.Ans = D_textbox.Text;
+                            db.Entry(ans).State = EntityState.Modified;
                         }
                         db.SaveChanges();
                         updateDGV();
@@ -233,8 +216,9 @@ namespace Testownik
                     Add_button.Text = "Dodaj";
                 }
             }
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////koniec edycji
         }
-
+        
         private void clearFields()
         {
             A_checkbox.CheckState = CheckState.Unchecked;
@@ -252,15 +236,52 @@ namespace Testownik
 
         private void updateDGV()
         {
-            qlist.AddRange(questList);
-            dataGridView1.DataSource = null;
+            //qlist = null;
+            using (var db = new AppContext())
+            {  // Quiz quiz= new Quiz();
+                Question question = new Question();
+                List<Question> test=new List<Question>();
+                //quiz.Questions=new List<Question>();
+                //test = quiz.Questions;
+                question = db.Questions.FirstOrDefault(a=>a.Quiz.Id==quizID);
+                int temp=question.Id;
+                for (int i = temp; i <= db.Questions.Count(x => x.Id == temp); i++)
+                {
+                    question = db.Questions.FirstOrDefault(a => a.Id == i);
+                    test.Add(question);
+                }
+                if (qlist != null) qlist.AddRange(test);
+            }
+
+                //qlist.AddRange(questList);
+                //dataGridView1.DataSource = null;
             dataGridView1.DataSource = qlist;
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["Ask"].HeaderText = "Treść pytania";
             dataGridView1.Columns["Quiz"].Visible = false;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //klik prawego przycisku myszki
+            dataGridView1.MouseClick+=new MouseEventHandler(dataGridView1_MouseClick);
 
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.Button == MouseButtons.Left)
+            {
+                MessageBox.Show("left");
+            }
+            else
+            {
+                //MessageBox.Show("Right");
+
+            ContextMenuStrip menu= new ContextMenuStrip();
+                int position_xy_mouse_row = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+
+                MessageBox.Show(position_xy_mouse_row.ToString());
+            }
         }
 
         private bool isChecked()

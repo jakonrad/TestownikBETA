@@ -38,3 +38,10 @@ C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.Properties.Reso
 C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.csproj.GenerateResource.Cache
 C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.exe
 C:\Users\kondz\Desktop\Projekty C#\Testownik\obj\Debug\Testownik.pdb
+C:\Users\kondz\Desktop\Projekty C#\Testownik\bin\Debug\Testownik.exe.config
+C:\Users\kondz\Desktop\Projekty C#\Testownik\bin\Debug\Testownik.exe
+C:\Users\kondz\Desktop\Projekty C#\Testownik\bin\Debug\Testownik.pdb
+C:\Users\kondz\Desktop\Projekty C#\Testownik\bin\Debug\EntityFramework.dll
+C:\Users\kondz\Desktop\Projekty C#\Testownik\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kondz\Desktop\Projekty C#\Testownik\bin\Debug\EntityFramework.xml
+C:\Users\kondz\Desktop\Projekty C#\Testownik\bin\Debug\EntityFramework.SqlServer.xml
