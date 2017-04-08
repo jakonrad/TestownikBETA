@@ -9,7 +9,7 @@ namespace Testownik.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(global::Testownik.Models.AppContext context)
