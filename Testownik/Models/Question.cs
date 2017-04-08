@@ -11,7 +11,7 @@ namespace Testownik.Models
         public int Id { get; set; }
         public string Ask { get; set; }
         public virtual Quiz Quiz { get; set; }
-        public List<Answer> Answers { get; set; }
+        public virtual List<Answer> Answers { get; set; }
 
     }
 }
