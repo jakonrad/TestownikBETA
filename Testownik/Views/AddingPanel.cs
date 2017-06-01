@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Testownik.Models;
+using Testownik.Properties;
+using Testownik.Services;
 
 namespace Testownik
 {
@@ -17,119 +19,85 @@ namespace Testownik
     {
         //zmienne
         public string NameOfQuizDeliver { get; set; }
-
+        public bool IsQuizExist { get; set; }
         private string questID { get; set; }
         private List<Question> questList { get; set; }
+        public int QuizID { get; set; }
+        private bool bool_changeButton = true;
+        
+        
+
+        private readonly QuestionManagmentService _service = new QuestionManagmentService();
 
 
         public AddingPanel()
         {
             InitializeComponent();
             this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.Change_name_of_quiz_textbox.Visible = false;
+            this.Cancel_button.Visible = false;
         }
 
         private void AddingPanel_Load(object sender, EventArgs e)
         {
-            UpdateDgv();
+            //UpdateDgv();
             Name_of_quiz_label.Text = NameOfQuizDeliver;
+            if(!IsQuizExist) QuizID = _service.Add_quiz_to_database(NameOfQuizDeliver);
+            UpdateDgv();
         }
 
         private void Add_button_Click(object sender, EventArgs e)
         {
             /////////////////////////////////////////////////////////////////////dodawanie pytań
-            if (Add_button.Text == "Dodaj")
+            if (Add_button.Text == Resources.AddingPanel_Clear_button_Click_Dodaj)
             {
                 if (IsChecked())
                 {
-                    using (var db = new AppContext())
+                    var questId = _service.Add_question_to_database(QuizID, Question_textbox.Text);
+
+
+                    if (A_checkbox.Checked) //dodajemy 1 odp do bazy
                     {
-                        var quiz = db.Quizes.FirstOrDefault(); // FirstOrDefault(a => a.Id == quizID); - zmieniłem ze bierze pierwszy z bazy testowo
-                        if (quiz == null) return;
-                        if (quiz.Questions == null)
-                            quiz.Questions = new List<Question>();
-
-                        var answers = new List<Answer>(); //tworzy sie lista ktora potem jest wrzucana do bazy
-                        var question = new Question()
-                        {
-                            Ask = Question_textbox.Text,
-                            Answers = answers //tutaj se tą liste wrzuca
-                        };
-
-                        if (A_checkbox.Checked) //dodajemy 1 odp do bazy
-                        {
-                            answers.Add(new Answer()
-                            {
-                                Ans = A_textbox.Text,
-                                IsCorrect = true
-                            });
-                        }
-                        else
-                        {
-                            answers.Add(new Answer()
-                            {
-                                Ans = A_textbox.Text
-                            });
-                        }
-
-                        if (B_checkbox.Checked) //dodajemy 2 odp
-                        {
-                            answers.Add(new Answer()
-                            {
-                                Ans = B_textbox.Text,
-                                IsCorrect = true
-                            });
-                        }
-                        else
-                        {
-                            answers.Add(new Answer()
-                            {
-                                Ans = B_textbox.Text
-                            });
-                        }
-
-                        if (C_checkbox.Checked) //dodajemy 3 odp
-                        {
-                            answers.Add(new Answer()
-                            {
-                                Ans = C_textbox.Text,
-                                IsCorrect = true
-                            });
-                        }
-                        else
-                        {
-                            answers.Add(new Answer()
-                            {
-                                Ans = C_textbox.Text
-                            });
-                        }
-
-                        if (D_checkbox.Checked) //dodajemy 4 odp
-                        {
-                            answers.Add(new Answer()
-                            {
-                                Ans = D_textbox.Text,
-                                IsCorrect = true
-                            });
-                        }
-                        else
-                        {
-                            answers.Add(new Answer()
-                            {
-                                Ans = D_textbox.Text
-                            });
-                        }
-
-                        quiz.Questions.Add(question); //tutaj zostala dodana lista ze wszystkimi odp
-                        db.SaveChanges();
-                        questList = quiz.Questions;
-
-                        UpdateDgv();
+                        _service.Add_answer_to_database(questId, A_textbox.Text, true);
                     }
+                    else
+                    {
+                        _service.Add_answer_to_database(questId, A_textbox.Text, false);
+                    }
+
+                    if (B_checkbox.Checked) //dodajemy 2 odp
+                    {
+                        _service.Add_answer_to_database(questId, B_textbox.Text, true);
+                    }
+                    else
+                    {
+                        _service.Add_answer_to_database(questId, B_textbox.Text, false);
+                    }
+
+                    if (C_checkbox.Checked) //dodajemy 3 odp
+                    {
+                        _service.Add_answer_to_database(questId, C_textbox.Text, true);
+                    }
+                    else
+                    {
+                        _service.Add_answer_to_database(questId, C_textbox.Text, false);
+                    }
+
+                    if (D_checkbox.Checked) //dodajemy 4 odp
+                    {
+                        _service.Add_answer_to_database(questId, D_textbox.Text, true);
+                    }
+                    else
+                    {
+                        _service.Add_answer_to_database(questId, D_textbox.Text, false);
+                    }
+
+                    UpdateDgv();
                     ClearFields();
-                    MessageBox.Show("Pomyślnie dodano pytanie");
+                    MessageBox.Show(Resources.AddingPanel_Add_button_Click_Pomyślnie_dodano_pytanie);
                 }
             }///////////////////////////////////////////////////////////////////////////////////tutaj jest edycja pytań
-            else if (Add_button.Text == "Aktualizuj pytanie")
+            else if (Add_button.Text == Resources.AddingPanel_Add_button_Click_Aktualizuj_pytanie)
             {
                 if (!IsChecked()) return;
                 using (var db = new AppContext())
@@ -162,6 +130,7 @@ namespace Testownik
                             if (ans != null)
                             {
                                 ans.Ans = A_textbox.Text;
+                                ans.IsCorrect = false;
                                 db.Entry(ans).State = EntityState.Modified;
                             }
                         }
@@ -232,9 +201,80 @@ namespace Testownik
                 }
 
                 ClearFields();
-                Add_button.Text = "Dodaj";
+                MessageBox.Show(Resources.AddingPanel_Add_button_Click_Pomyślnie_edytowano_pytanie);
+                Add_button.Text = Resources.AddingPanel_Clear_button_Click_Dodaj;
             }
         }
+
+        private void Clear_button_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+            Add_button.Text = Resources.AddingPanel_Clear_button_Click_Dodaj;
+        }
+
+        private void Change_quiz_name_button_Click(object sender, EventArgs e)
+        {
+            if (bool_changeButton)
+            {
+                Name_of_quiz_label.Visible = false;
+                Change_name_of_quiz_textbox.Visible = true;
+                Change_name_of_quiz_textbox.Text = Name_of_quiz_label.Text;
+                Change_quiz_name_button.Text = Resources.AddingPanel_Change_quiz_name_button_Click_Potwierdź_zmianę;
+                Cancel_button.Visible = true;
+                bool_changeButton = false;
+            }
+            else
+            {
+                if (Change_name_of_quiz_textbox.Text.Length < 3)
+                {
+                    MessageBox.Show(Resources.Change_name_button_warning_min_3_letters);
+                }
+                else
+                {
+                    _service.Change_quiz_name(QuizID, Change_name_of_quiz_textbox.Text);
+                    MessageBox.Show(Resources.AddingPanel_Change_quiz_name_button_Click_Nazwa_testu_została_pomyślnie_zmieniona);
+                }
+
+                Name_of_quiz_label.Text = Change_name_of_quiz_textbox.Text;
+                Change_name_of_quiz_textbox.Visible = false;
+                Name_of_quiz_label.Visible = true;
+                Cancel_button.Visible = false;
+                Change_quiz_name_button.Text = Resources.AddingPanel_Change_quiz_name_button_Click_Zmień_nazwę_testu;
+                bool_changeButton = !bool_changeButton;
+            }
+
+        }
+
+        private void Cancel_button_Click(object sender, EventArgs e)
+        {
+            Change_name_of_quiz_textbox.Visible = false;
+            Name_of_quiz_label.Visible = true;
+            Change_quiz_name_button.Text = Resources.AddingPanel_Change_quiz_name_button_Click_Zmień_nazwę_testu;
+            bool_changeButton = true;
+            Cancel_button.Visible = false;
+        }
+
+
+        private bool IsChecked()
+        {
+            if (string.IsNullOrEmpty(A_textbox.Text) || string.IsNullOrEmpty(B_textbox.Text) ||
+                string.IsNullOrEmpty(C_textbox.Text) || string.IsNullOrEmpty(D_textbox.Text) ||
+                string.IsNullOrEmpty(Question_textbox.Text))
+            {
+                MessageBox.Show("Błąd: Nie wypełniłeś wszystkich pól!");
+                return false;
+            }
+            if (A_checkbox.Checked == false && B_checkbox.Checked == false && C_checkbox.Checked == false &&
+                D_checkbox.Checked == false)
+            {
+                MessageBox.Show("Błąd: Nie zaznaczyłeś ani jednej poprawnej odpowiedzi. Zaznacz przynajmniej jedną!");
+                return false;
+            }
+
+            return true;
+
+        }
+
 
         private void ClearFields()
         {
@@ -253,61 +293,22 @@ namespace Testownik
 
         private void UpdateDgv()
         {
-            using (var db = new AppContext())
-            {
-                var quizes = db.Quizes.AsNoTracking().ToList();
-                if (!quizes.Any())
-                {
-                    db.Quizes.Add(new Quiz()
-                    {
-                        Name = NameOfQuizDeliver,
-                        Questions = new List<Question>()
-                    });
-                    db.SaveChanges();
-                }
+            dataGridView1.DataSource = _service.Get_list_of_question(QuizID);
+            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["Ask"].HeaderText = "Treść pytania";
+            dataGridView1.Columns["Quiz"].Visible = false;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //klik prawego przycisku myszki
+            dataGridView1.MouseClick += dataGridView1_MouseClick;
 
-                dataGridView1.DataSource = quizes.FirstOrDefault()?.Questions;
-                dataGridView1.Columns["Id"].Visible = false;
-                dataGridView1.Columns["Ask"].HeaderText = "Treść pytania";
-                dataGridView1.Columns["Quiz"].Visible = false;
-                //dataGridView1.RowHeadersVisible = false;
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                //klik prawego przycisku myszki
-                //dataGridView1.MouseClick += dataGridView1_MouseClick;
-            }
         }
-
-        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                //MessageBox.Show("left");
-            }
-            else
-            {
-                int position_xy_mouse_row = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-                //MessageBox.Show(position_xy_mouse_row.ToString());
-            }
-        }
-
-        private bool IsChecked()
-        {
-            if (string.IsNullOrEmpty(A_textbox.Text) || string.IsNullOrEmpty(B_textbox.Text) ||
-                string.IsNullOrEmpty(C_textbox.Text) || string.IsNullOrEmpty(D_textbox.Text) ||
-                string.IsNullOrEmpty(Question_textbox.Text))
-            {
-                MessageBox.Show("Błąd: Nie wypełniłeś wszystkich pól!");
-                return false;
-            }
-            if (A_checkbox.Checked == false && B_checkbox.Checked == false && C_checkbox.Checked == false &&
-                D_checkbox.Checked == false)
-            {
-                MessageBox.Show(
-                    "Błąd: Nie zaznaczyłeś ani jednej poprawnej odpowiedzi. Zaznacz przynajmniej jedną!");
-                return false;
-            }
-
-            return true;
+            //ClearFields();
+            //if (dataGridView1.CurrentRow != null) questID = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
+            //GetAnswersFromQuestions(Int32.Parse(questID));
+            //Add_button.Text = Resources.AddingPanel_Add_button_Click_Aktualizuj_pytanie;
 
         }
 
@@ -322,7 +323,7 @@ namespace Testownik
 
                 //przypisanie pytań znajdujących się w bazie do textboxów
                 Question_textbox.Text = question.Ask;
-                //odpowiedź A
+
                 for (int i = 0; i < question.Answers.Count; i++)
                 {
                     var ans = question.Answers[i];
@@ -364,18 +365,61 @@ namespace Testownik
 
         }
 
-        private void Clear_button_Click(object sender, EventArgs e)
-        {
 
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)    //////////////////metoda która wczytuje klik myszki
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                //MessageBox.Show("left");
+            }
+            else
+            {
+                ContextMenuStrip menu_for_question = new ContextMenuStrip();
+                int position_xy_mouse_row = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+                //MessageBox.Show(position_xy_mouse_row.ToString());
+                questID = dataGridView1.Rows[position_xy_mouse_row].Cells["Id"].Value.ToString();
+
+                if (position_xy_mouse_row >= 0)
+                {
+                    menu_for_question.Items.Add("Usuń pytanie").Name = "Del";
+                }
+                menu_for_question.Show(dataGridView1, new Point(e.X, e.Y));
+                menu_for_question.ItemClicked += new ToolStripItemClickedEventHandler(menu_for_question_ItemClicked);
+            }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void menu_for_question_ItemClicked(object sender, ToolStripItemClickedEventArgs e)           // obsługa kliku opcji w menu
+        {
+
+            switch (e.ClickedItem.Name.ToString())
+            {
+                case "Del":
+                    int questId = Int32.Parse(questID);
+                    _service.DeleteQuestion(questId);
+                    UpdateDgv();
+
+                    break;
+            }
+        }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             ClearFields();
             if (dataGridView1.CurrentRow != null) questID = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
             GetAnswersFromQuestions(Int32.Parse(questID));
-            Add_button.Text = "Aktualizuj pytanie";
+            Add_button.Text = Resources.AddingPanel_Add_button_Click_Aktualizuj_pytanie;
+        }
 
+        private void Return_button_Click(object sender, EventArgs e)
+        {
+            var menu= new StartPage();
+            menu.Show();
+            Hide();
+        }
+
+        private void AddingPanel_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
     }
 }

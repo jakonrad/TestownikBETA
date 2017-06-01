@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Testownik.Properties
-{
-
-
+namespace Testownik.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,49 +22,133 @@ namespace Testownik.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Testownik.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aktualizuj pytanie.
+        /// </summary>
+        internal static string AddingPanel_Add_button_Click_Aktualizuj_pytanie {
+            get {
+                return ResourceManager.GetString("AddingPanel_Add_button_Click_Aktualizuj_pytanie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pomyślnie dodano pytanie.
+        /// </summary>
+        internal static string AddingPanel_Add_button_Click_Pomyślnie_dodano_pytanie {
+            get {
+                return ResourceManager.GetString("AddingPanel_Add_button_Click_Pomyślnie_dodano_pytanie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pomyślnie edytowano pytanie.
+        /// </summary>
+        internal static string AddingPanel_Add_button_Click_Pomyślnie_edytowano_pytanie {
+            get {
+                return ResourceManager.GetString("AddingPanel_Add_button_Click_Pomyślnie_edytowano_pytanie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nazwa testu musi się składać z minimum trzech znaków!.
+        /// </summary>
+        internal static string AddingPanel_Change_quiz_name_button_Click_Nazwa_testu_musi_się_składać_z_minimum_trzech_znaków_ {
+            get {
+                return ResourceManager.GetString("AddingPanel_Change_quiz_name_button_Click_Nazwa_testu_musi_się_składać_z_minimum_" +
+                        "trzech_znaków_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nazwa testu została pomyślnie zmieniona.
+        /// </summary>
+        internal static string AddingPanel_Change_quiz_name_button_Click_Nazwa_testu_została_pomyślnie_zmieniona {
+            get {
+                return ResourceManager.GetString("AddingPanel_Change_quiz_name_button_Click_Nazwa_testu_została_pomyślnie_zmieniona" +
+                        "", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Potwierdź zmianę.
+        /// </summary>
+        internal static string AddingPanel_Change_quiz_name_button_Click_Potwierdź_zmianę {
+            get {
+                return ResourceManager.GetString("AddingPanel_Change_quiz_name_button_Click_Potwierdź_zmianę", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmień nazwę testu.
+        /// </summary>
+        internal static string AddingPanel_Change_quiz_name_button_Click_Zmień_nazwę_testu {
+            get {
+                return ResourceManager.GetString("AddingPanel_Change_quiz_name_button_Click_Zmień_nazwę_testu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodaj.
+        /// </summary>
+        internal static string AddingPanel_Clear_button_Click_Dodaj {
+            get {
+                return ResourceManager.GetString("AddingPanel_Clear_button_Click_Dodaj", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nazwa testu musi się składać z minimum trzech znaków!.
+        /// </summary>
+        internal static string Change_name_button_warning_min_3_letters {
+            get {
+                return ResourceManager.GetString("Change_name_button_warning_min_3_letters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brak wiekszej ilości pytań!.
+        /// </summary>
+        internal static string ResolvePanel_Brak_wiekszej_ilości_pytań_ {
+            get {
+                return ResourceManager.GetString("ResolvePanel_Brak_wiekszej_ilości_pytań_", resourceCulture);
             }
         }
     }

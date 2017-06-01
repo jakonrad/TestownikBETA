@@ -70,6 +70,7 @@
             this.Controls.Add(this.Name_of_quiz_textbox);
             this.Name = "NameOfQuiz";
             this.Text = "Wpisz nazwę testu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NameOfQuiz_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

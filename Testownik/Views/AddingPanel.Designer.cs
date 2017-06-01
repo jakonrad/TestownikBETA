@@ -47,6 +47,10 @@
             this.B_checkbox = new System.Windows.Forms.CheckBox();
             this.C_checkbox = new System.Windows.Forms.CheckBox();
             this.D_checkbox = new System.Windows.Forms.CheckBox();
+            this.Change_quiz_name_button = new System.Windows.Forms.Button();
+            this.Change_name_of_quiz_textbox = new System.Windows.Forms.TextBox();
+            this.Cancel_button = new System.Windows.Forms.Button();
+            this.Return_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,12 +74,18 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(552, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(240, 342);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
             // label2
             // 
@@ -163,7 +173,7 @@
             // 
             // Add_button
             // 
-            this.Add_button.Location = new System.Drawing.Point(367, 279);
+            this.Add_button.Location = new System.Drawing.Point(448, 279);
             this.Add_button.Name = "Add_button";
             this.Add_button.Size = new System.Drawing.Size(93, 52);
             this.Add_button.TabIndex = 13;
@@ -173,7 +183,7 @@
             // 
             // Clear_button
             // 
-            this.Clear_button.Location = new System.Drawing.Point(16, 279);
+            this.Clear_button.Location = new System.Drawing.Point(318, 279);
             this.Clear_button.Name = "Clear_button";
             this.Clear_button.Size = new System.Drawing.Size(93, 52);
             this.Clear_button.TabIndex = 14;
@@ -221,11 +231,53 @@
             this.D_checkbox.Text = "Prawidłowa";
             this.D_checkbox.UseVisualStyleBackColor = true;
             // 
+            // Change_quiz_name_button
+            // 
+            this.Change_quiz_name_button.Location = new System.Drawing.Point(425, 6);
+            this.Change_quiz_name_button.Name = "Change_quiz_name_button";
+            this.Change_quiz_name_button.Size = new System.Drawing.Size(121, 26);
+            this.Change_quiz_name_button.TabIndex = 20;
+            this.Change_quiz_name_button.Text = "Zmień nazwę testu";
+            this.Change_quiz_name_button.UseVisualStyleBackColor = true;
+            this.Change_quiz_name_button.Click += new System.EventHandler(this.Change_quiz_name_button_Click);
+            // 
+            // Change_name_of_quiz_textbox
+            // 
+            this.Change_name_of_quiz_textbox.Location = new System.Drawing.Point(92, 10);
+            this.Change_name_of_quiz_textbox.MaxLength = 40;
+            this.Change_name_of_quiz_textbox.Name = "Change_name_of_quiz_textbox";
+            this.Change_name_of_quiz_textbox.Size = new System.Drawing.Size(245, 20);
+            this.Change_name_of_quiz_textbox.TabIndex = 21;
+            // 
+            // Cancel_button
+            // 
+            this.Cancel_button.Location = new System.Drawing.Point(369, 6);
+            this.Cancel_button.Name = "Cancel_button";
+            this.Cancel_button.Size = new System.Drawing.Size(50, 26);
+            this.Cancel_button.TabIndex = 22;
+            this.Cancel_button.Text = "Anuluj";
+            this.Cancel_button.UseVisualStyleBackColor = true;
+            this.Cancel_button.Click += new System.EventHandler(this.Cancel_button_Click);
+            // 
+            // Return_button
+            // 
+            this.Return_button.Location = new System.Drawing.Point(4, 279);
+            this.Return_button.Name = "Return_button";
+            this.Return_button.Size = new System.Drawing.Size(120, 51);
+            this.Return_button.TabIndex = 23;
+            this.Return_button.Text = "Wróć do menu głównego";
+            this.Return_button.UseVisualStyleBackColor = true;
+            this.Return_button.Click += new System.EventHandler(this.Return_button_Click);
+            // 
             // AddingPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(794, 343);
+            this.Controls.Add(this.Return_button);
+            this.Controls.Add(this.Cancel_button);
+            this.Controls.Add(this.Change_name_of_quiz_textbox);
+            this.Controls.Add(this.Change_quiz_name_button);
             this.Controls.Add(this.D_checkbox);
             this.Controls.Add(this.C_checkbox);
             this.Controls.Add(this.B_checkbox);
@@ -247,6 +299,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddingPanel";
             this.Text = "Testownik";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddingPanel_FormClosed);
             this.Load += new System.EventHandler(this.AddingPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -275,5 +328,9 @@
         private System.Windows.Forms.CheckBox B_checkbox;
         private System.Windows.Forms.CheckBox C_checkbox;
         private System.Windows.Forms.CheckBox D_checkbox;
+        private System.Windows.Forms.Button Change_quiz_name_button;
+        private System.Windows.Forms.TextBox Change_name_of_quiz_textbox;
+        private System.Windows.Forms.Button Cancel_button;
+        private System.Windows.Forms.Button Return_button;
     }
 }

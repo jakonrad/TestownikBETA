@@ -19,12 +19,26 @@ namespace Testownik
 
         private void Ok_button_Click(object sender, EventArgs e)
         {
-            var panel = new AddingPanel
+            if (Name_of_quiz_textbox.Text.Length < 3)
             {
-                NameOfQuizDeliver = Name_of_quiz_textbox.Text
-            };
-            panel.Show();
-            Hide();
+                MessageBox.Show("Nazwa testu musi się składać z minimum trzech znaków!");
+            }
+            else
+            {
+                var panel = new AddingPanel
+                {
+                    NameOfQuizDeliver = Name_of_quiz_textbox.Text,
+                    IsQuizExist = false
+                };
+                panel.Show();
+                Hide();
+            }
+            
+        }
+
+        private void NameOfQuiz_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
     }
 }

@@ -52,17 +52,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\BrowserManagmentService.cs" />
+    <Compile Include="Services\GetQuizService.cs" />
+    <Compile Include="Services\QuestionManagmentService.cs" />
+    <Compile Include="Services\ResolveManagmentService.cs" />
+    <Compile Include="Services\TicksAnswers.cs" />
     <Compile Include="Views\AddingPanel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AddingPanel.Designer.cs">
       <DependentUpon>AddingPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\BrowseQuizes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BrowseQuizes.Designer.cs">
+      <DependentUpon>BrowseQuizes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EndQuiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EndQuiz.Designer.cs">
+      <DependentUpon>EndQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EndQuizRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EndQuizRequest.Designer.cs">
+      <DependentUpon>EndQuizRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GetQuiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\GetQuiz.Designer.cs">
+      <DependentUpon>GetQuiz.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\NameOfQuiz.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\NameOfQuiz.Designer.cs">
       <DependentUpon>NameOfQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ResolvePanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ResolvePanel.Designer.cs">
+      <DependentUpon>ResolvePanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\StartPage.cs">
       <SubType>Form</SubType>
@@ -80,8 +115,23 @@
     <EmbeddedResource Include="Views\AddingPanel.resx">
       <DependentUpon>AddingPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\BrowseQuizes.resx">
+      <DependentUpon>BrowseQuizes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EndQuiz.resx">
+      <DependentUpon>EndQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EndQuizRequest.resx">
+      <DependentUpon>EndQuizRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GetQuiz.resx">
+      <DependentUpon>GetQuiz.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\NameOfQuiz.resx">
       <DependentUpon>NameOfQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ResolvePanel.resx">
+      <DependentUpon>ResolvePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\StartPage.resx">
       <DependentUpon>StartPage.cs</DependentUpon>
@@ -94,8 +144,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Views\packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -109,8 +162,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

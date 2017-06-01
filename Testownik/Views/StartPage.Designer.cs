@@ -65,6 +65,7 @@
             this.Resolve_button.TabIndex = 2;
             this.Resolve_button.Text = "Rozwiąż test";
             this.Resolve_button.UseVisualStyleBackColor = true;
+            this.Resolve_button.Click += new System.EventHandler(this.Resolve_button_Click);
             // 
             // Browse_button
             // 
@@ -75,6 +76,7 @@
             this.Browse_button.TabIndex = 3;
             this.Browse_button.Text = "Przeglądaj";
             this.Browse_button.UseVisualStyleBackColor = true;
+            this.Browse_button.Click += new System.EventHandler(this.Browse_button_Click);
             // 
             // Quit_button
             // 
@@ -85,6 +87,7 @@
             this.Quit_button.TabIndex = 4;
             this.Quit_button.Text = "Wyjście";
             this.Quit_button.UseVisualStyleBackColor = true;
+            this.Quit_button.Click += new System.EventHandler(this.Quit_button_Click);
             // 
             // StartPage
             // 
@@ -99,6 +102,7 @@
             this.Name = "StartPage";
             this.Text = "Testownik";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StartPage_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
