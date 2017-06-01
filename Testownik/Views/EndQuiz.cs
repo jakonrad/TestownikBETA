@@ -14,6 +14,9 @@ namespace Testownik.Views
     {
         public int Score { get; set; }
         public int Max { get; set; }
+        public int Hours { get; set; }
+        public int Mins { get; set; }
+        public int Sec { get; set; }
 
         public EndQuiz()
         {
@@ -29,6 +32,7 @@ namespace Testownik.Views
         {
             Total_pts.Text = Score.ToString();
             Max_pts.Text = Max.ToString();
+            Time_label.Text= string.Format("{0:00}:{1:00}:{2:00}", Hours, Mins, Sec);
         }
 
         private void Return_button_Click(object sender, EventArgs e)

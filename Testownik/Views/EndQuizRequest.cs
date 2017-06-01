@@ -14,6 +14,9 @@ namespace Testownik.Views
     {
         public int Score { get; set; }
         public int Max { get; set; }
+        public int Hours { get; set; }
+        public int Mins { get; set; }
+        public int Sec { get; set; }
         public ResolvePanel panel { get; set; }
         public EndQuizRequest()
         {
@@ -25,6 +28,9 @@ namespace Testownik.Views
             var form=new EndQuiz();
             form.Max = Max;
             form.Score = Score;
+            form.Hours = Hours;
+            form.Mins = Mins;
+            form.Sec = Sec;
             form.Show();
             Hide();
             panel.Visible = false;

@@ -151,5 +151,14 @@ namespace Testownik.Properties {
                 return ResourceManager.GetString("ResolvePanel_Brak_wiekszej_ilości_pytań_", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test nie zawiera żadnych pytań, lub posiada niekompletne odpowiedzi!.
+        /// </summary>
+        internal static string Test_nie_zawiera_żadnych_pytań__lub_posiada_niekompletne_odpowiedzi_ {
+            get {
+                return ResourceManager.GetString("Test_nie_zawiera_żadnych_pytań__lub_posiada_niekompletne_odpowiedzi_", resourceCulture);
+            }
+        }
     }
 }
