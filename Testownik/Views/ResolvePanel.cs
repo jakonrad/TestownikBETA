@@ -61,9 +61,6 @@ namespace Testownik.Views
             CorrectOrIncorrect = _service.Get_list_of_ticked_answers(count);
         }
 
-
-
-
         private void button_click(object sender, EventArgs e)
         {
             selectedButton = (Button)sender;
@@ -158,6 +155,30 @@ namespace Testownik.Views
             Number_of_question.Text = (numberOfQuestion + 1).ToString();
         }
 
+        private void Tick_answers()
+        {
+            Unmark_answers();
+            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[0] == false) A_button.BackColor = _service.Get_color(true);
+            else A_button.BackColor = _service.Get_color(false);
+
+            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[1] == false) B_button.BackColor = _service.Get_color(true);
+            else B_button.BackColor = _service.Get_color(false);
+
+            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[2] == false) C_button.BackColor = _service.Get_color(true);
+            else C_button.BackColor = _service.Get_color(false);
+
+            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[3] == false) D_button.BackColor = _service.Get_color(true);
+            else D_button.BackColor = _service.Get_color(false);
+        }
+
+        private void Unmark_answers()
+        {
+            A_button.BackColor = _service.Get_color(true);
+            B_button.BackColor = _service.Get_color(true);
+            C_button.BackColor = _service.Get_color(true);
+            D_button.BackColor = _service.Get_color(true);
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (sec < 59)
@@ -200,31 +221,7 @@ namespace Testownik.Views
 
         private void ResolvePanel_FormClosed(object sender, FormClosedEventArgs e)
         {
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
-        }
-
-        private void Tick_answers()
-        {
-            Unmark_answers();
-            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[0] == false) A_button.BackColor = _service.Get_color(true);
-            else A_button.BackColor = _service.Get_color(false);
-
-            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[1] == false) B_button.BackColor = _service.Get_color(true);
-            else B_button.BackColor = _service.Get_color(false);
-
-            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[2] == false) C_button.BackColor = _service.Get_color(true);
-            else C_button.BackColor = _service.Get_color(false);
-
-            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[3] == false) D_button.BackColor = _service.Get_color(true);
-            else D_button.BackColor = _service.Get_color(false);
-        }
-
-        private void Unmark_answers()
-        {
-            A_button.BackColor = _service.Get_color(true);
-            B_button.BackColor = _service.Get_color(true);
-            C_button.BackColor = _service.Get_color(true);
-            D_button.BackColor = _service.Get_color(true);
+            Process.GetCurrentProcess().Kill();
         }
     }
 }
