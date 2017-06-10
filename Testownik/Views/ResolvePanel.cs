@@ -38,6 +38,7 @@ namespace Testownik.Views
             Name_of_quiz_label.Text = _service.Get_quiz_name(QuizIdDeliver);
             //ładowanie pierwszego pytania
             numberOfQuestion = 0;
+            questsList = _service.Get_question_list(QuizIdDeliver);
             Load_question();
             //ładowanie przycisków nawigacji
             choose_question_flowlayoutPanel.AutoScroll = true;
@@ -56,12 +57,9 @@ namespace Testownik.Views
             sec = 0;
             hours = 0;
             mins = 0;
-            Time_label.Text = string.Format("{0:00}:{1:00}:{2:00}", hours, mins, sec);            
+            Time_label.Text = string.Format("{0:00}:{1:00}:{2:00}", hours, mins, sec);
             CorrectOrIncorrect = _service.Get_list_of_ticked_answers(count);
         }
-
-
-
 
         private void button_click(object sender, EventArgs e)
         {
@@ -144,29 +142,41 @@ namespace Testownik.Views
 
         private void Load_question()
         {
-            questsList = _service.Get_question_list(QuizIdDeliver);
-            int questid=0;
-            if (questsList.Count == 0)
-            {
-                MessageBox.Show("Test nie zawiera żadnych pytań!");
-                GetQuiz form = new GetQuiz();
-                form.Show();
-                //this.Visible=false;
-                this.DialogResult = DialogResult.Cancel;
-            }
-            else
-            {
-                questid = questsList[numberOfQuestion].Id;
-                var answersList = _service.Get_answer_list(questid);
-                Question_name_label.Text = questsList[numberOfQuestion].Ask;
-                A_button.Text = answersList[0].Ans;
-                B_button.Text = answersList[1].Ans;
-                C_button.Text = answersList[2].Ans;
-                D_button.Text = answersList[3].Ans;
-                if (numberOfQuestion != 0) Tick_answers();
-                Number_of_question.Text = (numberOfQuestion + 1).ToString();
-            }
-            
+            //questsList = _service.Get_question_list(QuizIdDeliver);
+            int questid = 0;
+            questid = questsList[numberOfQuestion].Id;
+            var answersList = _service.Get_answer_list(questid);
+            Question_name_label.Text = questsList[numberOfQuestion].Ask;
+            A_button.Text = answersList[0].Ans;
+            B_button.Text = answersList[1].Ans;
+            C_button.Text = answersList[2].Ans;
+            D_button.Text = answersList[3].Ans;
+            if (numberOfQuestion != 0) Tick_answers();
+            Number_of_question.Text = (numberOfQuestion + 1).ToString();
+        }
+
+        private void Tick_answers()
+        {
+            Unmark_answers();
+            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[0] == false) A_button.BackColor = _service.Get_color(true);
+            else A_button.BackColor = _service.Get_color(false);
+
+            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[1] == false) B_button.BackColor = _service.Get_color(true);
+            else B_button.BackColor = _service.Get_color(false);
+
+            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[2] == false) C_button.BackColor = _service.Get_color(true);
+            else C_button.BackColor = _service.Get_color(false);
+
+            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[3] == false) D_button.BackColor = _service.Get_color(true);
+            else D_button.BackColor = _service.Get_color(false);
+        }
+
+        private void Unmark_answers()
+        {
+            A_button.BackColor = _service.Get_color(true);
+            B_button.BackColor = _service.Get_color(true);
+            C_button.BackColor = _service.Get_color(true);
+            D_button.BackColor = _service.Get_color(true);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -195,40 +205,23 @@ namespace Testownik.Views
         private void End_quiz_button_Click(object sender, EventArgs e)
         {
             var requestForm = new EndQuizRequest();
-            var temp = _service.Get_maxscore_amount(QuizIdDeliver);
-            requestForm.Score = _service.Check_answers(CorrectOrIncorrect, questsList.Count , QuizIdDeliver);
-            requestForm.Max = temp;
+            var maxscore = _service.Get_maxscore_amount(QuizIdDeliver);
+            //przekazanie punktów
+            requestForm.Score = _service.Check_answers(CorrectOrIncorrect, questsList.Count, QuizIdDeliver);
+            requestForm.Max = maxscore;
+            //przekazanie czasu
+            timer1.Stop();
+            requestForm.Hours = hours;
+            requestForm.Mins = mins;
+            requestForm.Sec = sec;
+            //
             requestForm.Show();
             requestForm.panel = this;
         }
 
         private void ResolvePanel_FormClosed(object sender, FormClosedEventArgs e)
         {
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
-        }
-
-        private void Tick_answers()
-        {
-            Unmark_answers();
-            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[0] == false) A_button.BackColor = _service.Get_color(true);
-            else A_button.BackColor = _service.Get_color(false);
-
-            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[1] == false) B_button.BackColor = _service.Get_color(true);
-            else B_button.BackColor = _service.Get_color(false);
-
-            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[2] == false) C_button.BackColor = _service.Get_color(true);
-            else C_button.BackColor = _service.Get_color(false);
-
-            if (CorrectOrIncorrect[numberOfQuestion].MarkAnswers[3] == false) D_button.BackColor = _service.Get_color(true);
-            else D_button.BackColor = _service.Get_color(false);
-        }
-
-        private void Unmark_answers()
-        {
-            A_button.BackColor = _service.Get_color(true);
-            B_button.BackColor = _service.Get_color(true);
-            C_button.BackColor = _service.Get_color(true);
-            D_button.BackColor = _service.Get_color(true);
+            Process.GetCurrentProcess().Kill();
         }
     }
 }

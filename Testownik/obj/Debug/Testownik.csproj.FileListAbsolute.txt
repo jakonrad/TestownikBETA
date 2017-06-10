@@ -62,11 +62,14 @@ C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\obj\Debug\Testownik
 C:\Users\SzymonBartnik\Source\Repos\KonradQuizRepo\Testownik\obj\Debug\Testownik.pdb
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.csprojResolveAssemblyReference.cache
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.Properties.Resources.resources
+C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.Views.AddingPanel.resources
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.Views.BrowseQuizes.resources
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.Views.EndQuiz.resources
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.Views.EndQuizRequest.resources
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.Views.GetQuiz.resources
+C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.Views.NameOfQuiz.resources
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.Views.ResolvePanel.resources
+C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.Views.StartPage.resources
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.csproj.GenerateResource.Cache
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.exe
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.pdb
@@ -77,6 +80,23 @@ C:\Users\kondz\Desktop\Projekty\Testo\Testownik\bin\Debug\EntityFramework.dll
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\bin\Debug\EntityFramework.xml
 C:\Users\kondz\Desktop\Projekty\Testo\Testownik\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.AddingPanel.resources
-C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.NameOfQuiz.resources
-C:\Users\kondz\Desktop\Projekty\Testo\Testownik\obj\Debug\Testownik.StartPage.resources
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\bin\Debug\Testownik.exe.config
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\bin\Debug\Testownik.exe
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\bin\Debug\Testownik.pdb
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\bin\Debug\EntityFramework.dll
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\bin\Debug\EntityFramework.xml
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.csprojResolveAssemblyReference.cache
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.AddingPanel.resources
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.Views.BrowseQuizes.resources
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.Views.EndQuiz.resources
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.Views.EndQuizRequest.resources
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.Views.GetQuiz.resources
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.NameOfQuiz.resources
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.Views.ResolvePanel.resources
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.StartPage.resources
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.Properties.Resources.resources
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.csproj.GenerateResource.Cache
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.exe
+C:\Users\kondz\Desktop\Projekty C#\Testo\Testownik\obj\Debug\Testownik.pdb

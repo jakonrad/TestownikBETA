@@ -40,7 +40,21 @@ namespace Testownik.Services
             {
                 var firstOrDefault = db.Quizes.FirstOrDefault(b => b.Id == quizId);
                 var questions = firstOrDefault?.Questions.ToList();
-                return questions;
+                short temp=0;
+                if (questions != null && questions.Count == 0) return null;
+                foreach (var t in questions)
+                {
+                    if (t.Answers.Count == 0)
+                    {
+
+                        temp++;
+                    }
+                }
+                if (temp == 0)
+                {
+                    return questions;
+                }
+                return null;
             }
         }
 

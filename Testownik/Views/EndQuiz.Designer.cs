@@ -35,6 +35,8 @@
             this.Max_pts = new System.Windows.Forms.Label();
             this.Ok_button = new System.Windows.Forms.Button();
             this.Return_button = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Time_label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -87,7 +89,7 @@
             // Ok_button
             // 
             this.Ok_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Ok_button.Location = new System.Drawing.Point(10, 79);
+            this.Ok_button.Location = new System.Drawing.Point(10, 132);
             this.Ok_button.Name = "Ok_button";
             this.Ok_button.Size = new System.Drawing.Size(105, 65);
             this.Ok_button.TabIndex = 5;
@@ -97,7 +99,7 @@
             // 
             // Return_button
             // 
-            this.Return_button.Location = new System.Drawing.Point(215, 79);
+            this.Return_button.Location = new System.Drawing.Point(239, 132);
             this.Return_button.Name = "Return_button";
             this.Return_button.Size = new System.Drawing.Size(105, 65);
             this.Return_button.TabIndex = 6;
@@ -105,11 +107,31 @@
             this.Return_button.UseVisualStyleBackColor = true;
             this.Return_button.Click += new System.EventHandler(this.Return_button_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 82);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Czas:";
+            // 
+            // Time_label
+            // 
+            this.Time_label.AutoSize = true;
+            this.Time_label.Location = new System.Drawing.Point(67, 81);
+            this.Time_label.Name = "Time_label";
+            this.Time_label.Size = new System.Drawing.Size(35, 13);
+            this.Time_label.TabIndex = 8;
+            this.Time_label.Text = "label5";
+            // 
             // EndQuiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 170);
+            this.ClientSize = new System.Drawing.Size(379, 233);
+            this.Controls.Add(this.Time_label);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.Return_button);
             this.Controls.Add(this.Ok_button);
             this.Controls.Add(this.Max_pts);
@@ -135,5 +157,7 @@
         private System.Windows.Forms.Label Max_pts;
         private System.Windows.Forms.Button Ok_button;
         private System.Windows.Forms.Button Return_button;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label Time_label;
     }
 }
